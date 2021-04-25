@@ -1,27 +1,58 @@
 import React from "react";
 import axios from "axios";
 import MainCard from "./MainCard";
+import SearchResult from "./SearchResult";
 //"https://api.spoonacular.com/recipes/random?apiKey=ad0bf0be4ce04adbbcf887e87b2973bd"
 //"https://api.spoonacular.com/recipes/complexSearch?query=pasta&apiKey=ad0bf0be4ce04adbbcf887e87b2973bd"
-function Header(props) {
-  const [data, setData] = React.useState({});
+function Header() {
+  const [randomData, setRandomData] = React.useState({});
+  const [searchData, setSearchData] = React.useState({});
   const [Query, setQuery] = React.useState("");
-  const getdata = async () => {
+  const getRandomData = async () => {
     try {
       const res = await axios.get(
         "https://api.spoonacular.com/recipes/random?apiKey=ad0bf0be4ce04adbbcf887e87b2973bd"
       );
       //console.log(res.data.recipes[0]);
-      setData(res.data.recipes[0]);
+      setRandomData(res.data.recipes[0]);
     } catch (err) {
       console.log(err);
     }
   };
-  const renderData = () => {
-    //console.log(Object.keys(data).length);
-    if (Object.keys(data).length) {
-      return <MainCard data={data}></MainCard>;
+  const getSearchData = async () => {
+    try {
+      const res = await axios.get(
+        "https://api.spoonacular.com/recipes/complexSearch?query=pasta&apiKey=ad0bf0be4ce04adbbcf887e87b2973bd"
+      );
+      //console.log(res.data.recipes[0]);
+      setSearchData(res.data.results);
+      console.log(searchData);
+      renderList(searchData);
+    } catch (err) {
+      console.log(err);
     }
+  };
+  const renderList = (obj) => {
+    console.log(Object.keys(obj).length);
+    if (Object.keys(obj).length) {
+      console.log("enter");
+      return (
+        <ol>
+          <li>Hello</li>
+          {obj.forEach((ob) => {
+            return <SearchResult data={ob}></SearchResult>;
+          })}
+        </ol>
+      );
+    }
+    getRandomData();
+  };
+  const renderData = (obj) => {
+    //console.log(Object.keys(data).length);
+    if (Object.keys(obj).length) {
+      return <MainCard data={randomData}></MainCard>;
+    }
+    getRandomData();
   };
 
   return (
@@ -36,9 +67,9 @@ function Header(props) {
           console.log(Query);
         }}
       />
-      <button onClick={getdata}>Search</button>
+      <button onClick={getSearchData}>Search</button>
 
-      {renderData()}
+      {/*renderData(randomData)*/}
     </div>
   );
 }

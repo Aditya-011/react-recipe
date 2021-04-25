@@ -3,7 +3,7 @@ import parse from "html-react-parser";
 const MainCard = (props) => {
   const data = props.data;
 
-  console.log(data);
+  //console.log(data);
   return (
     <div className="card">
       <h3>Name : {data.title} </h3>
