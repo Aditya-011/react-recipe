@@ -1,7 +1,7 @@
 import React from "react";
 
 function SearchResult(props) {
-  const data = props.title;
+  const data = props.data;
   console.log(data);
   return (
     <div>

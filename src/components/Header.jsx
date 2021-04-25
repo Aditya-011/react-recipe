@@ -5,9 +5,11 @@ import SearchResult from "./SearchResult";
 //"https://api.spoonacular.com/recipes/random?apiKey=ad0bf0be4ce04adbbcf887e87b2973bd"
 //"https://api.spoonacular.com/recipes/complexSearch?query=pasta&apiKey=ad0bf0be4ce04adbbcf887e87b2973bd"
 function Header() {
+  //
   const [randomData, setRandomData] = React.useState({});
-  const [searchData, setSearchData] = React.useState({});
+  const [searchData, setSearchData] = React.useState(["hello", "shello"]);
   const [Query, setQuery] = React.useState("");
+  //
   const getRandomData = async () => {
     try {
       const res = await axios.get(
@@ -19,6 +21,7 @@ function Header() {
       console.log(err);
     }
   };
+  //
   const getSearchData = async () => {
     try {
       const res = await axios.get(
@@ -26,20 +29,17 @@ function Header() {
       );
       //console.log(res.data.recipes[0]);
       setSearchData(res.data.results);
-      console.log(searchData);
-      renderList(searchData);
     } catch (err) {
       console.log(err);
     }
   };
   const renderList = (obj) => {
-    console.log(Object.keys(obj).length);
-    if (Object.keys(obj).length) {
+    if (obj.length) {
+      console.log(searchData);
       console.log("enter");
       return (
         <ol>
-          <li>Hello</li>
-          {obj.forEach((ob) => {
+          {obj.map((ob) => {
             return <SearchResult data={ob}></SearchResult>;
           })}
         </ol>
@@ -69,6 +69,7 @@ function Header() {
       />
       <button onClick={getSearchData}>Search</button>
 
+      {renderList(searchData)}
       {/*renderData(randomData)*/}
     </div>
   );
