@@ -1,7 +1,8 @@
 import React from "react";
-
+import parse from "html-react-parser";
 const MainCard = (props) => {
-  const [data, setData] = React.useState(props.data);
+  const data = props.data;
+
   console.log(data);
   return (
     <div className="card">
@@ -9,8 +10,8 @@ const MainCard = (props) => {
       <img src={data.image} alt="" />
       <p>Cuisine Type : {data.cuisines[0]} </p>
       <p>DishType : {data.dishTypes}</p>
-      <p>Instruction : {data.instructions}</p>
-      <p>Summary : {data.summary}</p>
+      <p>Instruction : {parse(data.instructions)}</p>
+      <p>Summary : {parse(data.summary)}</p>
     </div>
   );
 };
