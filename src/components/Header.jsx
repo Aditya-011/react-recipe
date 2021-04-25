@@ -1,15 +1,27 @@
 import React from "react";
 import axios from "axios";
+import MainCard from "./MainCard";
+//"https://api.spoonacular.com/recipes/random?apiKey=ad0bf0be4ce04adbbcf887e87b2973bd"
+//"https://api.spoonacular.com/recipes/complexSearch?query=pasta&apiKey=ad0bf0be4ce04adbbcf887e87b2973bd"
 function Header(props) {
-  const [state, setState] = React.useState([]);
+  const [data, setData] = React.useState({});
   const [Query, setQuery] = React.useState("");
   const getdata = async () => {
-    fetch(
-      //"https://api.spoonacular.com/recipes/random?apiKey=ad0bf0be4ce04adbbcf887e87b2973bd",
-      "https://api.spoonacular.com/recipes/complexSearch?query=pasta&apiKey=ad0bf0be4ce04adbbcf887e87b2973bd"
-    )
-      .then((response) => response.json())
-      .then((data) => console.log(data));
+    try {
+      const res = await axios.get(
+        "https://api.spoonacular.com/recipes/random?apiKey=ad0bf0be4ce04adbbcf887e87b2973bd"
+      );
+      //console.log(res.data.recipes[0]);
+      setData(res.data.recipes[0]);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  const renderData = () => {
+    //console.log(Object.keys(data).length);
+    if (Object.keys(data).length) {
+      return <MainCard data={data}></MainCard>;
+    }
   };
 
   return (
@@ -25,11 +37,8 @@ function Header(props) {
         }}
       />
       <button onClick={getdata}>Search</button>
-      <ul>
-        {state.map((person) => (
-          <li>{person.name}</li>
-        ))}
-      </ul>
+
+      {renderData()}
     </div>
   );
 }
