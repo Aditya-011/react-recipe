@@ -39,7 +39,6 @@ function Header() {
       console.log("enter");
       return (
         <ol>
-          <p>HEllo</p>
           {obj.map((ob) => {
             return <SearchResult data={ob}></SearchResult>;
           })}
