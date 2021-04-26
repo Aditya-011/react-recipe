@@ -6,8 +6,8 @@ function SearchResult(props) {
   return (
     <div>
       <li>
-        <img src="" alt="" />
-        <p>Name : {data}</p>
+        <img src={data.image} alt="" />
+        <p>Name : {data.title}</p>
       </li>
     </div>
   );

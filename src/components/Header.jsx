@@ -7,7 +7,7 @@ import SearchResult from "./SearchResult";
 function Header() {
   //
   const [randomData, setRandomData] = React.useState({});
-  const [searchData, setSearchData] = React.useState(["hello", "shello"]);
+  const [searchData, setSearchData] = React.useState([]);
   const [Query, setQuery] = React.useState("");
   //
   const getRandomData = async () => {
@@ -39,22 +39,21 @@ function Header() {
       console.log("enter");
       return (
         <ol>
+          <p>HEllo</p>
           {obj.map((ob) => {
             return <SearchResult data={ob}></SearchResult>;
           })}
         </ol>
       );
     }
-    getRandomData();
   };
   const renderData = (obj) => {
     //console.log(Object.keys(data).length);
     if (Object.keys(obj).length) {
       return <MainCard data={randomData}></MainCard>;
     }
-    getRandomData();
   };
-
+  //getRandomData();
   return (
     <div className="header">
       <h1>Recipie App</h1>
