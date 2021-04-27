@@ -26,7 +26,7 @@ function Header() {
   const getSearchData = async () => {
     try {
       const res = await axios.get(
-        "https://api.spoonacular.com/recipes/complexSearch?query=pasta&apiKey=ad0bf0be4ce04adbbcf887e87b2973bd"
+        `https://api.spoonacular.com/recipes/complexSearch?query=${Query}&apiKey=ad0bf0be4ce04adbbcf887e87b2973bd`
       );
       //console.log(res.data.recipes[0]);
       setSearchData(res.data.results);
