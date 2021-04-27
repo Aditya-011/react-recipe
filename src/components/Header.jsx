@@ -20,6 +20,7 @@ function Header() {
     } catch (err) {
       console.log(err);
     }
+    //renderData(randomData);
   };
   //
   const getSearchData = async () => {
@@ -53,6 +54,9 @@ function Header() {
     }
   };
   //getRandomData();
+  React.useEffect(() => {
+    getRandomData();
+  }, []);
   return (
     <div className="header">
       <h1>Recipie App</h1>
@@ -68,7 +72,7 @@ function Header() {
       <button onClick={getSearchData}>Search</button>
 
       {renderList(searchData)}
-      {/*renderData(randomData)*/}
+      {renderData(randomData)}
     </div>
   );
 }

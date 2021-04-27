@@ -29,7 +29,7 @@ function IndRecipie() {
   return (
     <div>
       <button>
-        <Link>Go back</Link>
+        <Link to="/">Go back</Link>
       </button>
       {renderData(data)}
     </div>
