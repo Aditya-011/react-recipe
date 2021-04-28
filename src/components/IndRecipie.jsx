@@ -32,6 +32,7 @@ function IndRecipie() {
         <Link to="/">Go back</Link>
       </button>
       {renderData(data)}
+      <button>Get Similar Recipie</button>
     </div>
   );
 }

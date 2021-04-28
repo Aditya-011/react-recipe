@@ -1,62 +1,35 @@
 import React from "react";
 import axios from "axios";
 import MainCard from "./MainCard";
-import SearchResult from "./SearchResult";
+//import SearchResult from "./SearchResult";
 //"https://api.spoonacular.com/recipes/random?apiKey=ad0bf0be4ce04adbbcf887e87b2973bd"
 //"https://api.spoonacular.com/recipes/complexSearch?query=pasta&apiKey=ad0bf0be4ce04adbbcf887e87b2973bd"
 function Header() {
-  //
-  const [randomData, setRandomData] = React.useState({});
-  const [searchData, setSearchData] = React.useState([]);
+  const [data, setData] = React.useState({});
   const [Query, setQuery] = React.useState("");
-  //
-  const getRandomData = async () => {
+  const getData = async () => {
     try {
       const res = await axios.get(
         "https://api.spoonacular.com/recipes/random?apiKey=ad0bf0be4ce04adbbcf887e87b2973bd"
       );
       //console.log(res.data.recipes[0]);
-      setRandomData(res.data.recipes[0]);
+      setData(res.data.recipes[0]);
     } catch (err) {
       console.log(err);
     }
     //renderData(randomData);
   };
-  //
-  const getSearchData = async () => {
-    try {
-      const res = await axios.get(
-        `https://api.spoonacular.com/recipes/complexSearch?query=${Query}&apiKey=ad0bf0be4ce04adbbcf887e87b2973bd`
-      );
-      //console.log(res.data.recipes[0]);
-      setSearchData(res.data.results);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-  const renderList = (obj) => {
-    if (obj.length) {
-      console.log(searchData);
-      console.log("enter");
-      return (
-        <ol>
-          {obj.map((ob) => {
-            return <SearchResult data={ob}></SearchResult>;
-          })}
-        </ol>
-      );
-    }
-  };
-  const renderData = (obj) => {
-    //console.log(Object.keys(data).length);
+
+  const renderData = (obj, type) => {
     if (Object.keys(obj).length) {
-      return <MainCard data={randomData}></MainCard>;
+      return <MainCard data={data}></MainCard>;
     }
   };
-  //getRandomData();
+
   React.useEffect(() => {
-    getRandomData();
+    getData();
   }, []);
+
   return (
     <div className="header">
       <h1>Recipie App</h1>
@@ -69,10 +42,11 @@ function Header() {
           console.log(Query);
         }}
       />
-      <button onClick={getSearchData}>Search</button>
+      <button>
+        <a href={`search/${Query}`}>Search</a>
+      </button>
 
-      {renderList(searchData)}
-      {renderData(randomData)}
+      {renderData(data)}
     </div>
   );
 }
