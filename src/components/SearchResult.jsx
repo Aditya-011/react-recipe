@@ -1,14 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Navbar from "./Navbar";
 import axios from "axios";
-function SearchResult() {
+function SearchResult(props) {
   const [data, setData] = React.useState([]);
-
+  const {
+    match: { params },
+  } = props;
   //console.log(data);
   const getData = async () => {
     try {
       const res = await axios.get(
-        `https://api.spoonacular.com/recipes/complexSearch?query=${Query}&apiKey=ad0bf0be4ce04adbbcf887e87b2973bd`
+        `https://api.spoonacular.com/recipes/complexSearch?query=${params.query}&apiKey=ad0bf0be4ce04adbbcf887e87b2973bd`
       );
       //console.log(res.data.recipes[0]);
       setData(res.data.results);
@@ -17,29 +20,25 @@ function SearchResult() {
     }
   };
 
-  const renderList = (obj) => {
-    if (obj.length) {
-      //clearRandomData();
-      console.log(Data);
-      console.log("enter");
+  React.useEffect(() => {
+    getData();
+  }, []);
 
-      return (
-        <ol>
-          {obj.map((ob) => {
-            return <SearchResult data={ob}></SearchResult>;
-          })}
-        </ol>
-      );
-    }
-  };
   return (
     <div>
-      <li>
-        <Link to="/individual">
-          <img src={data.image} alt="" />
-          <p>Name : {data.title}</p>
-        </Link>
-      </li>
+      <Navbar></Navbar>
+      <ol>
+        {data.map((ob) => {
+          return (
+            <li>
+              <Link to="/individual">
+                <img src={ob.image} alt="" />
+                <p>Name : {ob.title}</p>
+              </Link>
+            </li>
+          );
+        })}
+      </ol>
     </div>
   );
 }

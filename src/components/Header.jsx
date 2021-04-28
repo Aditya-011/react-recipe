@@ -1,12 +1,12 @@
 import React from "react";
 import axios from "axios";
 import MainCard from "./MainCard";
+import Navbar from "./Navbar";
 //import SearchResult from "./SearchResult";
 //"https://api.spoonacular.com/recipes/random?apiKey=ad0bf0be4ce04adbbcf887e87b2973bd"
 //"https://api.spoonacular.com/recipes/complexSearch?query=pasta&apiKey=ad0bf0be4ce04adbbcf887e87b2973bd"
 function Header() {
   const [data, setData] = React.useState({});
-  const [Query, setQuery] = React.useState("");
   const getData = async () => {
     try {
       const res = await axios.get(
@@ -32,20 +32,7 @@ function Header() {
 
   return (
     <div className="header">
-      <h1>Recipie App</h1>
-      <input
-        type="text"
-        className="srcinput"
-        value={Query}
-        onChange={(e) => {
-          setQuery(e.target.value);
-          console.log(Query);
-        }}
-      />
-      <button>
-        <a href={`search/${Query}`}>Search</a>
-      </button>
-
+      <Navbar></Navbar>
       {renderData(data)}
     </div>
   );
