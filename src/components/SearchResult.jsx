@@ -14,6 +14,7 @@ function SearchResult(props) {
         `https://api.spoonacular.com/recipes/complexSearch?query=${params.query}&apiKey=ad0bf0be4ce04adbbcf887e87b2973bd`
       );
       //console.log(res.data.recipes[0]);
+      console.log(res.data.results);
       setData(res.data.results);
     } catch (err) {
       console.log(err);
@@ -31,7 +32,7 @@ function SearchResult(props) {
         {data.map((ob) => {
           return (
             <li>
-              <Link to="/individual">
+              <Link to={`/information/${ob.id}`}>
                 <img src={ob.image} alt="" />
                 <p>Name : {ob.title}</p>
               </Link>

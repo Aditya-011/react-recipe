@@ -3,12 +3,15 @@ import axios from "axios";
 import MainCard from "./MainCard";
 import { Link } from "react-router-dom";
 
-function IndRecipie() {
+function IndRecipie(props) {
+  const {
+    match: { params },
+  } = props;
   const [data, setdata] = React.useState({});
   const getData = async () => {
     try {
       const res = await axios.get(
-        "https://api.spoonacular.com/recipes/654959/information?apiKey=ad0bf0be4ce04adbbcf887e87b2973bd"
+        `https://api.spoonacular.com/recipes/${params.id}/information?apiKey=ad0bf0be4ce04adbbcf887e87b2973bd`
       );
       //console.log(res.data.recipes[0]);
       console.log(res.data);
@@ -31,8 +34,11 @@ function IndRecipie() {
       <button>
         <Link to="/">Go back</Link>
       </button>
+
+      <button>
+        <Link to="/">Get Similar Recipie</Link>
+      </button>
       {renderData(data)}
-      <button>Get Similar Recipie</button>
     </div>
   );
 }

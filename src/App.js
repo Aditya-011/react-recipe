@@ -1,7 +1,7 @@
 import "./App.css";
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Header from "./components/Header";
+import Index from "./components/Index";
 import IndRecipie from "./components/IndRecipie";
 import SearchResult from "./components/SearchResult";
 function App() {
@@ -9,8 +9,8 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-          <Route path="/" component={Header} exact></Route>
-          <Route path="/individual" component={IndRecipie} exact></Route>
+          <Route path="/" component={Index} exact></Route>
+          <Route path="/information/:id" component={IndRecipie} exact></Route>
           <Route path="/search/:query" component={SearchResult} exact></Route>
         </Switch>
       </Router>
