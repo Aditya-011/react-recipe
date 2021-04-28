@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 import axios from "axios";
+import { Toaster, toast } from "react-hot-toast";
+
 function SearchResult(props) {
   const [data, setData] = React.useState([]);
   const {
@@ -15,7 +17,11 @@ function SearchResult(props) {
       );
       //console.log(res.data.recipes[0]);
       console.log(res.data.results);
-      setData(res.data.results);
+      if (!Object.keys(res.data.results).length) {
+        toast.error("Please Enter a Valid Query 🙂");
+      } else if (Object.keys(res.data.results).length) {
+        setData(res.data.results);
+      }
     } catch (err) {
       console.log(err);
     }
@@ -23,11 +29,12 @@ function SearchResult(props) {
 
   React.useEffect(() => {
     getData();
-  }, []);
+  }, [params.query]);
 
   return (
     <div>
-      <Navbar></Navbar>
+      <Toaster position="top-right" reverseOrder={false} />
+      <Navbar value={params.query}></Navbar>
       <ol>
         {data.map((ob) => {
           return (
