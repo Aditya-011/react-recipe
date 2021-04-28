@@ -36,7 +36,7 @@ function IndRecipie(props) {
       </button>
 
       <button>
-        <Link to="/">Get Similar Recipie</Link>
+        <Link to={`/similar/${data.id}`}>Get Similar Recipie</Link>
       </button>
       {renderData(data)}
     </div>
