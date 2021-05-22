@@ -28,7 +28,7 @@ function IndRecipie(props) {
   };
   React.useEffect(() => {
     getData();
-  }, []);
+  });
   return (
     <div>
       <button>

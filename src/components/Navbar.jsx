@@ -10,24 +10,31 @@ function Navbar(props) {
       <h1>
         <Link to="/">Recipie App</Link>
       </h1>
-      <input
-        type="text"
-        className="srcinput"
-        value={Query}
-        onChange={(e) => {
-          setQuery(e.target.value);
-          console.log(Query);
-        }}
-      />
-      <button
-        onClick={() => {
-          if (!Query.length) {
-            toast.error("Please Enter a Query 🙂");
-          }
-        }}
-      >
-        <Link to={Query.length ? `/search/${Query}` : ""}>Search</Link>
-      </button>
+      <div className="input-container">
+        <div className="input-wrapper">
+          <input
+            type="text"
+            className="srcinput"
+            placeholder="What are you looking for ?"
+            value={Query}
+            onChange={(e) => {
+              setQuery(e.target.value);
+              console.log(Query);
+            }}
+          />
+          <button
+            onClick={() => {
+              if (!Query.length) {
+                toast.error("Please Enter a Query 🙂");
+              }
+            }}
+          >
+            <Link to={Query.length ? `/search/${Query}` : ""}>
+              <i class="fas fa-search"></i>
+            </Link>
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
