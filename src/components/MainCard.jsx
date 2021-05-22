@@ -6,10 +6,14 @@ const MainCard = (props) => {
   //console.log(data);
   return (
     <div className="card">
-      <h3>{data.title} </h3>
-      <img src={data.image} alt="" />
+      <div className="title">
+        <h3>{data.title} </h3>
+      </div>
+      <img src={data.image} className="image" alt="Cuisine Image" />
       <p>{data.cuisines[0]} </p>
-      <p>DishType : {data.dishTypes}</p>
+      <div className="dishtype">
+        <p>Dish type : {data.dishTypes}</p>
+      </div>
       <p>Instruction : {parse(data.instructions)}</p>
       <p>Summary : {parse(data.summary)}</p>
     </div>

@@ -33,6 +33,7 @@ function Header() {
   return (
     <div className="header">
       <Navbar></Navbar>
+      {renderData(data)}
     </div>
   );
 }
