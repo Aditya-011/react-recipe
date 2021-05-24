@@ -31,14 +31,16 @@ function IndRecipie(props) {
   });
   return (
     <div>
-      <button>
-        <Link to="/">Go back</Link>
+      <button className="backBtn">
+        <Link to="/">
+          <i class="fa fa-arrow-left" aria-hidden="true"></i>
+        </Link>
       </button>
 
-      <button>
+      {renderData(data)}
+      <button className="similar">
         <Link to={`/similar/${data.id}`}>Get Similar Recipie</Link>
       </button>
-      {renderData(data)}
     </div>
   );
 }

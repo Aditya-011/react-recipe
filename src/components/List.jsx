@@ -5,9 +5,9 @@ function List(props) {
   return (
     <div>
       <li>
-        <Link to={`/information/${ob.id}`}>
-          <img src={ob.image} alt="" />
-          <p>Name : {ob.title}</p>
+        <Link to={`/information/${ob.id}`} className="srcUnit">
+          <img src={ob.image} alt="" className="srcImage" />
+          <p className="srcText">{ob.title}</p>
         </Link>
       </li>
     </div>
