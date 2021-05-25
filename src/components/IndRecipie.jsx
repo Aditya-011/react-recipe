@@ -26,9 +26,8 @@ function IndRecipie(props) {
       return <MainCard data={obj}></MainCard>;
     }
   };
-  React.useEffect(() => {
-    getData();
-  });
+  getData();
+  React.useEffect(() => {});
   return (
     <div>
       <button className="backBtn">

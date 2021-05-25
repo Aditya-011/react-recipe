@@ -36,8 +36,10 @@ function SimilarRecipie(props) {
       <h1>
         <Link to="/">Recipie App</Link>
       </h1>
-      <button>
-        <Link to={`/information/${params.query}`}>Go back</Link>
+      <button className="backBtn">
+        <Link to="/">
+          <i class="fa fa-arrow-left" aria-hidden="true"></i>
+        </Link>
       </button>
       <ol>
         {data.map((ob) => {

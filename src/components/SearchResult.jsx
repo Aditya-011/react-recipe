@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Redirect } from "react-router-dom";
 import Navbar from "./Navbar";
 import List from "./List";
 import axios from "axios";
@@ -20,6 +20,8 @@ function SearchResult(props) {
       console.log(res.data.results);
       if (!Object.keys(res.data.results).length) {
         toast.error("Please Enter a Valid Query 🙂");
+
+        return <Redirect to="/" />;
       } else if (Object.keys(res.data.results).length) {
         setData(res.data.results);
       }
@@ -34,6 +36,7 @@ function SearchResult(props) {
 
   return (
     <div>
+      {props.loggedIn ? null : <Redirect to="/" />}
       <Toaster position="top-right" reverseOrder={false} />
       <Navbar value={params.query}></Navbar>
       <ol>
