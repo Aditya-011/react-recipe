@@ -7,6 +7,7 @@ function IndRecipie(props) {
   const {
     match: { params },
   } = props;
+
   const [data, setdata] = React.useState({});
   const getData = async () => {
     try {
@@ -26,10 +27,8 @@ function IndRecipie(props) {
       return <MainCard data={obj}></MainCard>;
     }
   };
+  getData();
 
-  React.useEffect(() => {
-    getData();
-  }, []);
   return (
     <div className="ind">
       <button className="backBtn">

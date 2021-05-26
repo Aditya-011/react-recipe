@@ -9,7 +9,7 @@ const MainCard = (props) => {
       <div className="title">
         <h3>{data.title} </h3>
       </div>
-      <img src={data.image} className="image" alt="Cuisine Image" />
+      <img src={data.image} className="image" alt="" />
       <div className="data">
         {data.cuisines.length ? (
           <p>

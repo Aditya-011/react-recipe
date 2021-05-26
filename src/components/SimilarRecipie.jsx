@@ -26,9 +26,7 @@ function SimilarRecipie(props) {
       //console.log(err);
     }
   };
-  React.useEffect(() => {
-    getData();
-  }, []);
+  getData();
 
   return (
     <div>
