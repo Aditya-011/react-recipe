@@ -3,19 +3,39 @@ import parse from "html-react-parser";
 const MainCard = (props) => {
   const data = props.data;
 
-  //console.log(data);
+  console.log(data);
   return (
     <div className="card">
       <div className="title">
         <h3>{data.title} </h3>
       </div>
       <img src={data.image} className="image" alt="Cuisine Image" />
-      <p>{data.cuisines[0]} </p>
-      <div className="dishtype">
-        <p>Dish type : {data.dishTypes}</p>
+      <div className="data">
+        {data.cuisines.length ? (
+          <p>
+            Cuisine Type :
+            {data.cuisines.map((type) => {
+              return <span> {type},</span>;
+            })}
+          </p>
+        ) : null}
+        {data.dishTypes.length ? (
+          <div className="dishtype">
+            <p>
+              Dish type :
+              {data.dishTypes.map((diet) => {
+                return <span> {diet},</span>;
+              })}
+            </p>
+          </div>
+        ) : null}
+
+        <p className="instruction">
+          Instruction : <p> {parse(data.instructions)}</p>
+        </p>
+        <p>Summary :</p>
+        <p> {parse(data.summary)}</p>
       </div>
-      <p>Instruction : {parse(data.instructions)}</p>
-      <p>Summary : {parse(data.summary)}</p>
     </div>
   );
 };

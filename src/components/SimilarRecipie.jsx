@@ -28,7 +28,7 @@ function SimilarRecipie(props) {
   };
   React.useEffect(() => {
     getData();
-  });
+  }, []);
 
   return (
     <div>
@@ -41,11 +41,11 @@ function SimilarRecipie(props) {
           <i class="fa fa-arrow-left" aria-hidden="true"></i>
         </Link>
       </button>
-      <ol>
+      <ul>
         {data.map((ob) => {
           return <List data={ob}></List>;
         })}
-      </ol>
+      </ul>
     </div>
   );
 }

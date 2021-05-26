@@ -20,8 +20,6 @@ function SearchResult(props) {
       console.log(res.data.results);
       if (!Object.keys(res.data.results).length) {
         toast.error("Please Enter a Valid Query 🙂");
-
-        return <Redirect to="/" />;
       } else if (Object.keys(res.data.results).length) {
         setData(res.data.results);
       }
@@ -32,18 +30,17 @@ function SearchResult(props) {
 
   React.useEffect(() => {
     getData();
-  }, [params.query]);
+  }, [props]);
 
   return (
     <div>
-      {props.loggedIn ? null : <Redirect to="/" />}
       <Toaster position="top-right" reverseOrder={false} />
       <Navbar value={params.query}></Navbar>
-      <ol>
+      <ul>
         {data.map((ob) => {
           return <List data={ob}></List>;
         })}
-      </ol>
+      </ul>
     </div>
   );
 }

@@ -72,15 +72,15 @@ input::placeholder {
   color: #d6d6d6;
 }
 .image {
-  width: 300px;
-  height: 290px;
+  width: 220px;
+  height: 210px;
   border-radius: 50%;
   position: absolute;
   right: -5%;
   top: -7%;
 }
 .title {
-  width: calc(100% - 300px);
+  width: calc(100% - 100px);
   font-weight: 600;
   font-size: 1.5rem;
 }
@@ -93,7 +93,7 @@ input::placeholder {
   color: #1d2d36;
   text-decoration: underline;
 }
-ol {
+ul {
   list-style: none;
   display: flex;
   justify-content: center;
@@ -122,6 +122,7 @@ ol {
   height: 50px;
   width: 50px;
   margin-top: 2rem;
+  margin-left: 2rem;
   text-align: center;
   font-size: 1.1rem;
   font-weight: 600;
@@ -132,10 +133,10 @@ ol {
   font-size: 1.5rem;
 }
 .similar {
-  padding: 0.5rem 1rem;
+  padding: 0.7rem 1rem;
   background: #1d2d36;
   font-size: 1.1rem;
-  width: 30vw;
+  width: 15rem;
   font-weight: 600;
   border-radius: 25px;
   text-align: center;
@@ -147,4 +148,16 @@ ol {
 }
 .similar:hover a {
   color: #1d2d36;
+}
+.ind {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+.instruction ol li {
+  list-style: decimal;
+}
+.data {
+  margin-top: 2rem;
 }
