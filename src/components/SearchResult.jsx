@@ -17,14 +17,14 @@ function SearchResult(props) {
         `https://api.spoonacular.com/recipes/complexSearch?query=${params.query}&apiKey=ad0bf0be4ce04adbbcf887e87b2973bd`
       );
       //console.log(res.data.recipes[0]);
-      console.log(res.data.results);
+      //console.log(res.data.results);
       if (!Object.keys(res.data.results).length) {
         toast.error("Please Enter a Valid Query 🙂");
       } else if (Object.keys(res.data.results).length) {
         setData(res.data.results);
       }
     } catch (err) {
-      console.log(err);
+      //console.log(err);
     }
   };
 

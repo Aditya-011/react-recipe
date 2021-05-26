@@ -14,10 +14,10 @@ function IndRecipie(props) {
         `https://api.spoonacular.com/recipes/${params.id}/information?apiKey=ad0bf0be4ce04adbbcf887e87b2973bd`
       );
       //console.log(res.data.recipes[0]);
-      console.log(res.data);
+      //console.log(res.data);
       setdata(res.data);
     } catch (err) {
-      console.log(err);
+      //console.log(err);
     }
   };
   const renderData = (obj) => {

@@ -15,7 +15,7 @@ function Header() {
       //console.log(res.data.recipes[0]);
       setData(res.data.recipes[0]);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
     //renderData(randomData);
   };

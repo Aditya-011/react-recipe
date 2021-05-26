@@ -16,14 +16,14 @@ function SimilarRecipie(props) {
         `https://api.spoonacular.com/recipes/${params.query}/similar?apiKey=ad0bf0be4ce04adbbcf887e87b2973bd`
       );
       //console.log(res.data.recipes[0]);
-      console.log(res.data);
+      //console.log(res.data);
       if (!Object.keys(res.data).length) {
         toast.error("Please Enter a Valid Query 🙂");
       } else if (Object.keys(res.data).length) {
         setData(res.data);
       }
     } catch (err) {
-      console.log(err);
+      //console.log(err);
     }
   };
   React.useEffect(() => {

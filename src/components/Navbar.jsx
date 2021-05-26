@@ -19,7 +19,7 @@ function Navbar(props) {
             value={Query}
             onChange={(e) => {
               setQuery(e.target.value);
-              console.log(Query);
+              //console.log(Query);
             }}
           />
           <button
