@@ -1,5 +1,5 @@
 import React from "react";
-//Simport { Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import Navbar from "./Navbar";
 import List from "./List";
 import axios from "axios";
@@ -54,6 +54,7 @@ function SearchResult(props) {
     <div>
       <Toaster position="top-right" reverseOrder={false} />
       <Navbar value={params.query}></Navbar>
+
       <ul>
         {data.map((ob) => {
           return <List data={ob}></List>;
